@@ -1,0 +1,1 @@
+export const rootlink = 'http://3.6.160.235:8000/'
