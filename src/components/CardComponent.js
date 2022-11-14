@@ -349,8 +349,7 @@ const CardComponenet = () => {
                                             <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views <br/>3rd October 2022</p>
                                         </div>
-                                    </div>
-                                    
+                                    </div>   
                                 </CardContent>
                             </Card>
 

@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
+import { useDispatch, useSelector } from 'react-redux'
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
@@ -15,7 +16,6 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import RequestsGetQuetionData from './Request'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -141,6 +141,7 @@ const DialogContent = withStyles((theme) => ({
 
 export default function CustomizedDialogs(props) {
     console.log("==========props", props)
+    const dispatch = useDispatch()
 
     const classes = useStyles();
     const requestQuetionsApiData = new RequestsGetQuetionData();
@@ -159,7 +160,7 @@ export default function CustomizedDialogs(props) {
         age: '',
         name: 'hai',
     });
-
+    const allQuestions = useSelector((state) => state?.Form?.allQuestions);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -177,7 +178,7 @@ export default function CustomizedDialogs(props) {
             "last_name": ""
         }
 
-        // console.log("=====sendData", sendData)
+        console.log("=====sendData", sendData)
 
         // requestApiData.signUpRequest(sendData).then(res => {
 
@@ -199,7 +200,7 @@ export default function CustomizedDialogs(props) {
 
     const getQuetionDetails = () => {
         requestQuetionsApiData.gestQuetionsDetails().then((res) => {
-            console.log("======res>", res.data.questions[0].question)
+            dispatch({ type: "QUESTIONS", payload: res.data.questions })
         })
     }
 
@@ -239,8 +240,9 @@ export default function CustomizedDialogs(props) {
                 <DialogContent >
 
                     <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-                        <InputLabel htmlFor="outlined-age-native-simple">Question1</InputLabel>
+                        <InputLabel htmlFor="outlined-age-native-simple">Question 1</InputLabel>
                         <Select
+                            placeholder='Question 1'
                             native
                             className={classes.selectField}
                             value={state.age}
@@ -251,15 +253,17 @@ export default function CustomizedDialogs(props) {
                                 id: 'outlined-age-native-simple',
                             }}
                         >
+                            {/* <option aria-label="None" value="">sele</> */}
                             <option aria-label="None" value="" />
-                            <option value={10}>Ten</option>
-                            <option value={20}>Twenty</option>
-                            <option value={30}>Thirty</option>
+                            {
+                                allQuestions && allQuestions.map(({ question, id })=>  <option aria-label="None" value={id}>{question}</option>)
+                            }
                         </Select>
                     </FormControl>
 
                     <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                         <TextField
+                            placeholder='Select'
                             className={classes.textField}
                             label="Answer1"
                             id="outlined-size-small"
@@ -273,25 +277,24 @@ export default function CustomizedDialogs(props) {
                     </FormControl>
 
                     <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-                        <InputLabel htmlFor="outlined-age-native-simple">Question2</InputLabel>
+                        <InputLabel htmlFor="outlined-age-native-simple">Question 2</InputLabel>
                         <Select
+                            placeholder='Question 2'
                             native
                             className={classes.selectField}
-                            value={state.age}
+                            // value={state.age}
                             onChange={handleChange}
-                            label="Question2"
+                            label="Question 2"
                             inputProps={{
                                 name: 'age',
                                 id: 'outlined-age-native-simple',
                             }}
                         >
-                            <option aria-label="None" value="" />
+                            {/* <option aria-label="None" value="" /> */}
                            
-                            {/* {data.map((user, index) =>{
-                                
-                                <option key={index} value={user.id}>{user.question}</option>
-                                
-                            })} */}
+                            {
+                                allQuestions && allQuestions.map(({ question, id })=>  <option aria-label="None" value={id}>{question}</option>)
+                            }
                         </Select>
                     </FormControl>
 

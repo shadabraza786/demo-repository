@@ -13,20 +13,21 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { makeStyles, alpha, withStyles } from '@material-ui/core/styles';
 import VideoLibraryOutlinedIcon from '@material-ui/icons/VideoLibraryOutlined';
-import PaigeonLogo from '../assets/Images/paigeonlogo.jpeg'
+import PaigeonLogo from '../../assets/Images/paigeonlogo.jpeg'
 import Badge from '@material-ui/core/Badge';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import {rootlink} from "../constant/configs/linkConfig";
+import {rootlink} from "../../constant/configs/linkConfig";
 import { useNavigate } from 'react-router-dom';
-import getDetailsRequests from "../modals/Request";
-import Requests from "../modals/Request";
+// import getDetailsRequests from "/modals/Request";
+// import Requests from "../modals/Request";
 import { MdLocalFireDepartment, MdRecommend, MdKeyboardArrowUp } from 'react-icons/md';
-import RecommendedIcon from '../assets/Images/recommended.jfif';
-import LiveVideos from '../assets/Images/livestream.jfif';
-import settingicon from '../assets/icons/settingicon.png'
+import RecommendedIcon from '../../assets/Images/recommended.jfif';
+import LiveVideos from '../../assets/Images/livestream.jfif';
+import settingicon from '../../assets/icons/settingicon.png'
+import ProfileContainer from '../../components/ProfileContainer'
 
 
 const drawerWidth = 220;
@@ -129,16 +130,17 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
     // marginLeft: '80px',
-    width: '510px',
+    width: '600px',
     marginRight : '20px',
     border: '1.5px solid #EFEFEF',
+    border: '1.5px solid black',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(5),
       // width: 'auto',
     },
   },
   searchIcon: {
-    marginLeft : '280px', 
+    marginLeft : '350px', 
     paddingTop : '5px', 
     marginTop : '5px'
   },
@@ -183,7 +185,9 @@ const useStyles = makeStyles((theme) => ({
     width: '220px',
     height: '40px',
     marginLeft: '-40px',
-    paddingTop: '5px'
+    paddingLeft : '50px',
+    paddingTop: '5px',
+    fontWeight : 'bold'
   },
   DrawerIcons: {
     marginTop: '5px',
@@ -224,7 +228,7 @@ DrwaerItemsWithTour: {
   // background : '#c3eaf5', 
   // width: '220px',
   height: '40px',
-  marginLeft: '20px',
+  marginLeft: '10px',
   paddingTop: '5px'
 },
 }));
@@ -275,15 +279,15 @@ const AntTab = withStyles((theme) => ({
 }))((props) => <Tab disableRipple {...props} />);
 
 
-function AfterLoginHeader() {
+function Profile() {
 
   const classes = useStyles();
   const getUrlLink = rootlink;
   const baseUrl = getUrlLink.replace("0/", "0");
 
   const navigate = useNavigate();
-  const requestApiData = new Requests();
-  const getDetailsRequest = new getDetailsRequests()
+//   const requestApiData = new Requests();
+//   const getDetailsRequest = new getDetailsRequests()
   
   const [open, setOpen] = React.useState(true);
   const [value, setValue] = React.useState(0);
@@ -306,15 +310,12 @@ function AfterLoginHeader() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const handleMenuLogout = () => {
-    navigate('/');
-    window.alert("Are you sure you want to logout")
-    requestApiData.getlogoutRequest().then(res => {
-    })
-  }
-  const handleMenuProfile = () => {
-    navigate('/profile');
-  }
+//   const handleMenuLogout = () => {
+//     navigate('/');
+//     window.alert("Are you sure you want to logout")
+//     requestApiData.getlogoutRequest().then(res => {
+//     })
+//   }
 
   const handleMenuClose = () => {
     setAnchorEl(null);
@@ -333,14 +334,14 @@ function AfterLoginHeader() {
   //     setOpen(false);
   //   };
 
-  const getUserDetails = () => {
-    getDetailsRequest.getDetailsUserRequest().then(res => {
-      // const result = json.parse(res.data)
-      const result = res.data
-      console.log(result.user_detail.email)
-      setData(result)
-    })
-  }
+//   const getUserDetails = () => {
+//     getDetailsRequest.getDetailsUserRequest().then(res => {
+//       // const result = json.parse(res.data)
+//       const result = res.data
+//       console.log(result.user_detail.email)
+//       setData(result)
+//     })
+//   }
 
 
   const menuId = 'primary-search-account-menu';
@@ -359,8 +360,8 @@ function AfterLoginHeader() {
       {/* <MenuItem>{data.username}</MenuItem> */}
       <MenuItem>{data.user_detail?.email}</MenuItem>
       <Divider></Divider>
-      <MenuItem onClick={handleMenuProfile}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuLogout}>Logout</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      {/* <MenuItem onClick={handleMenuLogout}>Logout</MenuItem> */}
     </Menu>
   );
 
@@ -405,9 +406,9 @@ function AfterLoginHeader() {
     </Menu>
   );
 
-  useEffect(() => {
-    getUserDetails();
-  }, [])
+//   useEffect(() => {
+//     getUserDetails();
+//   }, [])
 
   return (
     <div className={classes.root}>
@@ -457,17 +458,17 @@ function AfterLoginHeader() {
 
           <div className={classes.growIcons} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
+            {/* <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <MailIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
             <IconButton aria-label="show 1 new notifications" color="inherit">
-              <Badge badgeContent={1} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <NotificationsNoneIcon />
               </Badge>
             </IconButton>
-            <IconButton
+            {/* <IconButton
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
@@ -477,9 +478,9 @@ function AfterLoginHeader() {
             >
               
               <img src={`${baseUrl}${data.profile?.[0].image}`} className={classes.profilePic} />
-            </IconButton>
+            </IconButton> */}
           </div>
-          <div className={classes.sectionMobile}>
+          {/* <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
               aria-controls={mobileMenuId}
@@ -489,7 +490,7 @@ function AfterLoginHeader() {
             >
               <MoreIcon />
             </IconButton>
-          </div>
+          </div> */}
           
 
 
@@ -514,82 +515,39 @@ function AfterLoginHeader() {
 
         <div className={classes.toolbar}></div>
 
-        <ul className={classes.DrawerMain}>
-          <div className={classes.DrwaerItemsActive}>
-            <VideoLibraryOutlinedIcon className={classes.DrawerIcons} />
-            <li> Video Library</li>
-          </div>
 
-          <div className={classes.DrwaerItemsAll}>
-            <MdLocalFireDepartment size="1.5em" className={classes.DrawerIcons} />
-            <li> Trending Videos</li>
-          </div>
-
-          <div className={classes.DrwaerItemsAll}>
-          <img src={RecommendedIcon} className={classes.RecommdedIcon}></img>
-            <li> Recommended</li>
-          </div>
-
-          <div className={classes.DrwaerItemsAll} style={{ marginBottom: '10px' }}>
-          <img src={LiveVideos} className={classes.LiveVideosIcon}></img>
-            <li> Live Videos</li>
-          </div>
-
-        </ul>
-        <ul className={classes.DrawerMain} style={{ marginTop: '-10px' }}>
-          <div className={classes.DrwaerItemsAll}>
-            <img src={RecommendedIcon} className={classes.RecommdedIcon}></img>
-            <li> My Videos</li>
-          </div>
-
-          <div className={classes.DrwaerItemsAll}>
-          <img src={RecommendedIcon} className={classes.RecommdedIcon}></img>
-            <li> Watch History</li>
-          </div>
-
-          <div className={classes.DrwaerItemsAll} style={{ marginBottom: '10px' }}>
-          <img src={RecommendedIcon} className={classes.RecommdedIcon}></img>
-            <li> Liked Videos</li>
-          </div>
-        </ul>
-
-        <ul className={classes.DrawerMain} style={{ marginTop: '-10px', borderBottom: 'none' }}>
+        <ul className={classes.DrawerMain} style={{ marginTop: '10px', borderBottom: 'none' }}>
           <div className={classes.DrwaerItemsAll}>
           <img src={settingicon} className={classes.settingIcon}></img>
-          <li style={{marginTop : '-3px'}}> Settings</li>
+          <li style={{marginTop : '-3px', fontWeight : 'bold'}}> Settings</li>
           </div>
 
-          <div className={classes.DrwaerItemsAll}>
-            <img src={RecommendedIcon} className={classes.RecommdedIcon}></img>
-            <li> Take a Tour</li>
-            <MdKeyboardArrowUp size="1.5em" className={classes.DrawerIcons} style={{ marginTop: '8px' }}></MdKeyboardArrowUp>
-          </div>
-
-          <div className={classes.DrwaerItemsWithTour}>
-            <li> Video Library</li>
+          <div className={classes.DrwaerItemsActive}>
+            <li> Your Account</li>
           </div>
 
 
           <div className={classes.DrwaerItemsWithTour}>
-            <li> Video Market</li>
+            <li> Link 2</li>
           </div>
 
 
           <div className={classes.DrwaerItemsWithTour}>
-            <li> Video Create</li>
+            <li> Link 3</li>
           </div>
 
 
           <div className={classes.DrwaerItemsWithTour}>
-            <li> Video Meet</li>
+            <li> Link 4</li>
           </div>
         </ul>
 
       </Drawer>
-       {renderMobileMenu}
-      {renderMenu}
+      <ProfileContainer/>
+       {/* {renderMobileMenu}
+      {renderMenu} */}
     </div>
   );
 }
 
-export default AfterLoginHeader;
+export default Profile;

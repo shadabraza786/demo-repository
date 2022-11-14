@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Requests from "./Request"
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -25,6 +25,8 @@ import Painting2Imge from '../assets/Images/painting2.PNG'
 import Science2Img from '../assets/Images/science2.PNG'
 import photography2 from '../assets/Images/photography2.PNG'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
+// import CiCircleCheck from 'react-icons/ci'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 
 
@@ -57,13 +59,13 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '0px',
         color: 'black',
         width: '80px',
-        height : '35px',
+        height: '35px',
         marginLeft: '185px',
         marginBottom: '25px',
-        boxShadow : 'none',
+        boxShadow: 'none',
         // display : 'inline-block'
-        hoverEffect : 'none',
-        textTransform : 'capitalize'
+        hoverEffect: 'none',
+        textTransform: 'capitalize'
     },
     nextButton: {
         background: '#2BA4C6',
@@ -102,20 +104,20 @@ const useStyles = makeStyles((theme) => ({
         gridTemplateColumns: 'auto auto auto auto auto',
         backgroundr: '#2196F3',
     },
-      gridItem: {
-        
-        margin : '10px',
+    gridItem: {
+
+        margin: '10px',
         background: 'rgba(255, 255, 255, 0.8)',
-        border: '1px solid rgba(0, 0, 0, 0.8)',
+        // border: '1px solid rgba(0, 0, 0, 0.8)',
         // padding: '20px',
         fontSize: '30px',
         textAlign: 'center'
     },
-    SelectFieldImage : {
-        marginTop : '10px',
+    SelectFieldImage: {
+        marginTop: '10px',
         // justifyContent : 'left',
-        width : '80px',
-        height : '40px',
+        width: '80px',
+        height: '50px',
     }
 }));
 
@@ -132,7 +134,9 @@ const styles = (theme) => ({
         top: theme.spacing(1),
         color: theme.palette.grey[500],
     },
-
+    SelectIcon : {
+        marginBottom : '-30px'
+    }
 });
 
 const DialogTitle = withStyles(styles)((props) => {
@@ -162,7 +166,7 @@ export default function CustomizedDialogs(props) {
     const requestApiData = new Requests();
 
     const [open, setOpen] = useState(false);
-    const [selectImage, setSelectImage] = useState(false);
+    const [selectImage, setSelectImage] = useState([]);
 
 
     const handleClickOpen = () => {
@@ -172,7 +176,13 @@ export default function CustomizedDialogs(props) {
         setOpen(false);
     };
 
-    const handleClickTravel = () => {
+    const handleClickImg = (type) => {
+        if (selectImage.includes(type)) {
+            const removeType = selectImage.filter((item) => item != type)
+            setSelectImage(removeType)
+        } else {
+            setSelectImage([...selectImage, type])
+        }
         // console.log("========>")
     }
 
@@ -200,7 +210,7 @@ export default function CustomizedDialogs(props) {
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen} style={{ marginLeft: '20px', background: '#2BA4C6', color: 'white', border : 'none', borderRadius : '0px', textTransform : 'capitalize', width : '90px' }}>
+            <Button variant="outlined" onClick={handleClickOpen} style={{ marginLeft: '20px', background: '#2BA4C6', color: 'white', border: 'none', borderRadius: '0px', textTransform: 'capitalize', width: '90px' }}>
                 Next
             </Button>
             <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} >
@@ -210,68 +220,130 @@ export default function CustomizedDialogs(props) {
                 <DialogContent >
 
                     <div className={classes.gridContainer}>
-                        <div className={classes.gridItem} onClick={handleClickTravel}>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(travelImage) ? '1px solid blue' : null }} id="1" onClick={() => handleClickImg(travelImage)}>
                             <img src={travelImage} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon className={classes.SelectIcon} style={{
+                                    
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(travelImage) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={foodImage} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(foodImage) ? '1px solid blue' : null }} id="2" onClick={() => handleClickImg(foodImage)}>
+                            <img src={foodImage} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(foodImage) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={WildlifeImg} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(WildlifeImg) ? '1px solid blue' : null }} id="3" onClick={() => handleClickImg(WildlifeImg)}>
+                            <img src={WildlifeImg} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(WildlifeImg) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={ArchitechtureImg} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(ArchitechtureImg) ? '1px solid blue' : null }} id="4" onClick={() => handleClickImg(ArchitechtureImg)}>
+                            <img src={ArchitechtureImg} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(ArchitechtureImg) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={technologyImg} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(technologyImg) ? '1px solid blue' : null }} id="5" onClick={() => handleClickImg(technologyImg)}>
+                            <img src={technologyImg} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(technologyImg) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={AutomobilesImg} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(AutomobilesImg) ? '1px solid blue' : null }} id="6" onClick={() => handleClickImg(AutomobilesImg)}>
+                            <img src={AutomobilesImg} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(AutomobilesImg) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={SpaceImg} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(SpaceImg) ? '1px solid blue' : null }} id="7" onClick={() => handleClickImg(SpaceImg)}>
+                            <img src={SpaceImg} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(SpaceImg) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={PaintingImg} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(PaintingImg) ? '1px solid blue' : null }} id="8" onClick={() => handleClickImg(PaintingImg)}>
+                            <img src={PaintingImg} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(PaintingImg) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={ScienceImg} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(ScienceImg) ? '1px solid blue' : null }} id="9" onClick={() => handleClickImg(ScienceImg)}>
+                            <img src={ScienceImg} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(ScienceImg) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={PhotographyImg} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(ScienceImg) ? '1px solid blue' : null }} id="10" onClick={() => handleClickImg(ScienceImg)}>
+                            <img src={PhotographyImg} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(PhotographyImg) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={CarsImage} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(CarsImage) ? '1px solid blue' : null }} id="11" onClick={() => handleClickImg(CarsImage)}>
+                            <img src={CarsImage} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(CarsImage) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={SpaceNormalImg} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(SpaceNormalImg) ? '1px solid blue' : null }} id="12" onClick={() => handleClickImg(SpaceNormalImg)}>
+                            <img src={SpaceNormalImg} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(SpaceNormalImg) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={Painting2Imge} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(Painting2Imge) ? '1px solid blue' : null }} id="13" onClick={() => handleClickImg(Painting2Imge)}>
+                            <img src={Painting2Imge} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(Painting2Imge) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={Science2Img} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(Science2Img) ? '1px solid blue' : null }} id="14" onClick={() => handleClickImg(Science2Img)}>
+                            <img src={Science2Img} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(Science2Img) ? 'block' : 'none'
+                            }} />
                         </div>
-                        <div className={classes.gridItem}>
-                        <img src={photography2} className={classes.SelectFieldImage}></img>
+                        <div className={classes.gridItem} style={{ border: selectImage.includes(photography2) ? '1px solid blue' : null }} id="15" onClick={() => handleClickImg(photography2)}>
+                            <img src={photography2} className={classes.SelectFieldImage}></img>
+                            <CheckCircleIcon style={{
+                                // maxHeight: '14px', marginLeft: '-21px', color: 'white', marginBottom: '35px',
+                                display: selectImage.includes(photography2) ? 'block' : 'none'
+                            }} />
                         </div>
-                        
+
                     </div>
 
                     <div className={classes.Bothbuttons}>
-                    <Button onClick={handleClose} variant="contained" className={classes.backButton}>
-                        Previous
-                    </Button>
+                        <Button onClick={handleClose} variant="contained" className={classes.backButton}>
+                            Previous
+                        </Button>
 
-                    <SequerityModalQuation
-                    gender={props.gender}
-                    nickName={props.nickName}
-                    email={props.email}
-                    password={props.password}
-                    cpassword={props.cpassword}
-                    SequerityQuestions={props.question}
-                    ></SequerityModalQuation>
-                </div>
+                        <SequerityModalQuation
+                            gender={props.gender}
+                            nickName={props.nickName}
+                            email={props.email}
+                            password={props.password}
+                            cpassword={props.cpassword}
+                            SequerityQuestions={props.question}
+                            SelectImage={props.selectImage}
+                        ></SequerityModalQuation>
+                    </div>
                 </DialogContent>
             </Dialog>
         </div>
