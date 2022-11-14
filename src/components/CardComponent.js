@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import VideoImg from '../assets/Images/videoimg.jpg';
+import VideoImg from '../assets/Images/Group.png';
 import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 import Card from '@material-ui/core/Card';
@@ -16,6 +16,7 @@ import videoTrangleBlue from '../assets/Images/bluetrangle.PNG'
 import recommendedIcon from '../assets/Images/recommended.jfif'
 import livestreaming from '../assets/Images/livestream.jfif'
 import livestreamingBlue from '../assets/Images/livestreaming.png'
+import slidernexicon from '../assets/icons/nexticon.png'
 
 
 
@@ -30,16 +31,16 @@ function SampleNextArrow(props) {
     );
 }
 
-function SampleNextArrowChiproot(props) {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={className}
-            style={{ ...style, display: "block", background: "black", color : 'white', height: '19px', borderRadius : '50%' }}
-            onClick={onClick}
-        />
-    );
-}
+// function SampleNextArrowChiproot(props) {
+//     const { className, style, onClick } = props;
+//     return (
+//         <div
+//             className={className}
+//             style={{ ...style, display: "block", background: "black", color : 'white', height: '19px', borderRadius : '50%' }}
+//             onClick={onClick}
+//         />
+//     );
+// }
 
 
 const useStyles = makeStyles((theme) => ({
@@ -100,8 +101,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     ChipColorMain: {
-        width: '50px',
-        // height : '20px',
+        width : '50%',
         background: '#2BA4C6',
         color: 'White',
         paddingTop: '7px'
@@ -201,7 +201,7 @@ const useStyles = makeStyles((theme) => ({
         width: '80%',
         height: '50px'
     },
-    CardHeading : {
+    CardTitle : {
         textAlign : 'left',
         marginTop : '2px'
     },
@@ -216,11 +216,11 @@ const useStyles = makeStyles((theme) => ({
         height : '20px',
     },
     livestreamingIcon : {
-        width : '20px',
-        height : '20px',
-        marginLeft:  '0px',
-        marginTop : '10px',
-        marginRight : '10px'
+        width : '25px',
+        height : '25px',
+        marginLeft:  '8px',
+        marginTop : '-4px',
+        marginRight : '6px'
     },
     LivestreamLogo : {
         width : '25px',
@@ -240,6 +240,18 @@ const useStyles = makeStyles((theme) => ({
         background: 'white', 
         height: '100%', 
         marginRight: '-20px' 
+    },
+    cardHeadingDiv : {
+        display : 'flex',
+        marginTop : '40px',
+        marginBottom : '-15px'
+    },
+    CardIcon : {
+        marginLeft : '10px'
+    },
+    cardHeading : {
+        marginTop : '-2px',
+        marginLeft : '10px'
     }
 }));
 
@@ -261,7 +273,7 @@ const CardComponenet = () => {
         speed: 500,
         slidesToShow: 10,
         slidesToScroll: 9,
-        nextArrow: <SampleNextArrowChiproot />
+        nextArrow: <img src={slidernexicon} />
     };
     return (
         <React.Fragment>
@@ -287,9 +299,14 @@ const CardComponenet = () => {
 
                 <div className={classes.CardContainer} >
                     <div className={classes.CardMain}>
+
+                        <div className={classes.cardHeadingDiv}>
+                            <MdLocalFireDepartment size="1.2em" className={classes.CardIcon}> 
+                             </MdLocalFireDepartment>
+                             <h3 className={classes.cardHeading}>Trending Videos  <a href="#" style={{ fontSize: '12px', textDecoration: 'none', color: '#2BA4C6' }}>See more</a></h3>
+                        </div>
                    
-                        <h3 style={{ marginLeft: '-850px', marginBottom: '0px'}}>
-                            <MdLocalFireDepartment size="1.2em">  </MdLocalFireDepartment>&nbsp;&nbsp;Trending Videos <a href="#" style={{ fontSize: '12px', textDecoration: 'none', color: '#2BA4C6' }}>See more</a> </h3>
+                        
 
                         <Slider {...settings} style={{ marginRight: '20px' }}>
                             
@@ -307,7 +324,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views <br/>3rd October 2022</p>
                                         </div>
                                     </div>
@@ -329,7 +346,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views <br/>3rd October 2022</p>
                                         </div>
                                     </div>
@@ -351,7 +368,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views <br/>3rd October 2022</p>
                                         </div>
                                     </div>
@@ -373,7 +390,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                     </div>
@@ -395,7 +412,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                     </div>
@@ -417,7 +434,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views </p>
                                         </div>
                                     </div>
@@ -439,7 +456,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                     </div>
@@ -462,7 +479,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                     </div>
@@ -471,7 +488,12 @@ const CardComponenet = () => {
                             </Card>
                         </Slider>
 
-                        <h3 style={{ marginLeft: '-790px', marginBottom: '0px' , marginTop: '35px'}}><img className={classes.RecommdedVideos} src={recommendedIcon}></img>&nbsp;&nbsp;Recommended Videos <a href="#" style={{ fontSize: '12px', textDecoration: 'none', color: '#2BA4C6' }}>See more</a> </h3>
+                        <div className={classes.cardHeadingDiv}>
+                        <img src={recommendedIcon} className={classes.livestreamingIcon}></img >
+                             <h3 className={classes.cardHeading}>Recommended <a href="#" style={{ fontSize: '12px', textDecoration: 'none', color: '#2BA4C6' }}>See more</a></h3>
+                        </div>
+
+                        {/* <h3 style={{ marginLeft: '-790px', marginBottom: '0px' , marginTop: '35px'}}><img className={classes.RecommdedVideos} src={recommendedIcon}></img>&nbsp;&nbsp;Recommended Videos <a href="#" style={{ fontSize: '12px', textDecoration: 'none', color: '#2BA4C6' }}>See more</a> </h3> */}
 
                         <Slider {...settings} style={{ marginRight: '20px' }}>
                             <Card className={classes.cardroot}>
@@ -488,7 +510,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                     </div>
@@ -510,7 +532,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                     </div>
@@ -532,7 +554,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views </p>
                                         </div>
                                     </div>
@@ -554,7 +576,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views </p>
                                         </div>
                                     </div>
@@ -576,7 +598,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views </p>
                                         </div>
                                     </div>
@@ -598,7 +620,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                     </div>
@@ -620,7 +642,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views </p>
                                         </div>
                                     </div>
@@ -643,7 +665,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                     </div>
@@ -651,9 +673,14 @@ const CardComponenet = () => {
                                 </CardContent>
                             </Card>
                         </Slider>
+
+                        <div className={classes.cardHeadingDiv}>
+                        <img src={livestreaming} className={classes.livestreamingIcon}></img >
+                             <h3 className={classes.cardHeading}>Live Videos  <a href="#" style={{ fontSize: '12px', textDecoration: 'none', color: '#2BA4C6' }}>See more</a></h3>
+                        </div>
                         
 
-                        <h3 style={{ marginLeft: '-870px', marginBottom: '0px' }}> <img src={livestreaming} className={classes.livestreamingIcon}></img >Live Videos <a href="#" style={{ fontSize: '12px', textDecoration: 'none', color: '#2BA4C6' }}>See more</a> </h3>
+                        {/* <h3 style={{ marginLeft: '-870px', marginBottom: '0px' }}> <img src={livestreaming} className={classes.livestreamingIcon}></img >Live Videos <a href="#" style={{ fontSize: '12px', textDecoration: 'none', color: '#2BA4C6' }}>See more</a> </h3> */}
 
                         <Slider {...settings} style={{ marginRight: '20px' }}>
                             <Card className={classes.cardroot}>
@@ -671,7 +698,7 @@ const CardComponenet = () => {
                                         </div>
                                         
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                         
@@ -694,7 +721,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                             
                                         </div>
@@ -718,7 +745,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                         <img src={livestreamingBlue} className={classes.LivestreamLogo}></img>
@@ -741,7 +768,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                         <img src={livestreamingBlue} className={classes.LivestreamLogo}></img>
@@ -764,7 +791,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views </p>
                                         </div>
                                     </div>
@@ -786,7 +813,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views </p>
                                         </div>
                                     </div>
@@ -808,7 +835,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                     </div>
@@ -831,7 +858,7 @@ const CardComponenet = () => {
                                             </Avatar>
                                         </div>
                                         <div className={classes.cardHeaderRight}>
-                                            <h4 className={classes.CardHeading}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
+                                            <h4 className={classes.CardTitle}>Lorem ipsum dolor sit,<br/> amet consectetur ipsum  </h4>
                                             <p className={classes.CardParagraph}>Patrick Resse | 200 views</p>
                                         </div>
                                     </div>

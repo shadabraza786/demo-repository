@@ -16,9 +16,10 @@ import VideoLibraryOutlinedIcon from '@material-ui/icons/VideoLibraryOutlined';
 import PaigeonLogo from '../assets/Images/paigeonlogo.jpeg'
 import Badge from '@material-ui/core/Badge';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
-import { MdLocalFireDepartment, MdRecommend, MdKeyboardArrowDown } from 'react-icons/md';
+import { MdLocalFireDepartment, MdRecommend, MdKeyboardArrowUp } from 'react-icons/md';
 import RecommendedIcon from '../assets/Images/recommended.jfif';
 import LiveVideos from '../assets/Images/livestream.jfif';
+import settingicon from '../assets/icons/settingicon.png'
 
 
 
@@ -193,7 +194,14 @@ LiveVideosIcon : {
     height : '30px',
     marginRight: '15px',
     paddingTop: '7px'
-}
+},
+settingIcon : {
+  marginLeft : '26px',
+  width : '15px',
+  height : '20px',
+  marginRight: '17px',
+  paddingTop: '5px'
+},
 }));
 
 const AntTabs = withStyles({
@@ -366,14 +374,14 @@ function BeforeLoginHeader() {
 
         <ul className={classes.DrawerMain} style={{ marginTop: '-10px', borderBottom: 'none' }}>
           <div className={classes.DrwaerItemsAll}>
-          <img src={RecommendedIcon} className={classes.RecommdedIcon}></img>
-            <li> Settings</li>
+          <img src={settingicon} className={classes.settingIcon}></img>
+            <li style={{marginTop : '-3px'}}> Settings</li>
           </div>
 
           <div className={classes.DrwaerItemsAll}>
             <img src={RecommendedIcon} className={classes.RecommdedIcon}></img>
             <li> Take a Tour</li>
-            <MdKeyboardArrowDown size="1.5em" className={classes.DrawerIcons} style={{ marginTop: '8px' }}></MdKeyboardArrowDown>
+            <MdKeyboardArrowUp size="1.5em" className={classes.DrawerIcons} style={{ marginTop: '8px' }}></MdKeyboardArrowUp>
           </div>
 
           <div className={classes.DrwaerItemsWithTour}>

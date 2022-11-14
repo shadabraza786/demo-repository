@@ -105,14 +105,11 @@ export default function CustomizedDialogs() {
     const requestApiData = new Requests();
 
 
-
     const [open, setOpen] = React.useState(false);
-    const [username, setUsername] = React.useState("");
     const [password, setPassowrd] = React.useState("");
     const [cpassword, setCpassword] = React.useState("");
     const [email, setEmail] = React.useState("");
-    const [firstName, setFirstName] = React.useState("");
-    const [lastName, setLastName] = React.useState("");
+   
 
 
     const handleClickOpen = () => {
@@ -123,9 +120,6 @@ export default function CustomizedDialogs() {
         setOpen(false);
     };
 
-    const handleChangeUsername = (e) => {
-        setUsername(e.target.value)
-    }
 
     const handleChangePassword = (e) => {
         setPassowrd(e.target.value)
@@ -139,13 +133,6 @@ export default function CustomizedDialogs() {
         setEmail(e.target.value)
     }
 
-    const handleChangeFirstName = (e) => {
-        setFirstName(e.target.value)
-    }
-
-    const handleChangeLastName = (e) => {
-        setLastName(e.target.value)
-    }
 
     return (
         <div>

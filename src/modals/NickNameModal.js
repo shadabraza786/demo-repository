@@ -130,12 +130,6 @@ export default function CustomizedDialogs(props) {
     const requestApiData = new Requests();
 
     const [open, setOpen] = React.useState(false);
-    const [username, setUsername] = React.useState("");
-    const [password, setPassowrd] = React.useState("");
-    const [cpassword, setCpassword] = React.useState("");
-    const [email, setEmail] = React.useState("");
-    const [firstName, setFirstName] = React.useState("");
-    const [lastName, setLastName] = React.useState("");
     const [nickName, setNickName] = React.useState("");
 
 
@@ -149,30 +143,6 @@ export default function CustomizedDialogs(props) {
     const handleChangeNickName = (e) => {
         setNickName(e.target.value)
         
-    }
-
-    const handleChangeUsername = (e) => {
-        setUsername(e.target.value)
-    }
-
-    const handleChangePassword = (e) => {
-        setPassowrd(e.target.value)
-    }
-
-    const handleChangeConfirmPassword = (e) => {
-        setCpassword(e.target.value)
-    }
-
-    const handleChangeEmail = (e) => {
-        setEmail(e.target.value)
-    }
-
-    const handleChangeFirstName = (e) => {
-        setFirstName(e.target.value)
-    }
-
-    const handleChangeLastName = (e) => {
-        setLastName(e.target.value)
     }
 
 
@@ -197,7 +167,7 @@ export default function CustomizedDialogs(props) {
                     </div>
                     
 
-                    <form >
+                    <form>
                         <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                             <TextField
                                 className={classes.textField}

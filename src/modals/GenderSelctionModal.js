@@ -134,12 +134,6 @@ export default function CustomizedDialogs(props) {
     const requestApiData = new Requests();
 
     const [open, setOpen] = React.useState(false);
-    const [username, setUsername] = React.useState("");
-    const [password, setPassowrd] = React.useState("");
-    const [cpassword, setCpassword] = React.useState("");
-    const [email, setEmail] = React.useState("");
-    const [firstName, setFirstName] = React.useState("");
-    const [lastName, setLastName] = React.useState("");
     const [gender, setGender] = React.useState("O");
 
 
@@ -151,14 +145,6 @@ export default function CustomizedDialogs(props) {
         setOpen(false);
     };
 
-    const handleChangeUsername = (e) => {
-        setUsername(e.target.value)
-    }
-
-    const handleSubmitNickname = () => {
-        setOpen(false);
-        setOpen(true);
-    }
 
     const handleChangeMale = (e) => {
         setGender("M")
@@ -172,26 +158,7 @@ export default function CustomizedDialogs(props) {
         setGender("O")
     }
 
-    const handleChangePassword = (e) => {
-        setPassowrd(e.target.value)
-    }
-
-    const handleChangeConfirmPassword = (e) => {
-        setCpassword(e.target.value)
-    }
-
-    const handleChangeEmail = (e) => {
-        setEmail(e.target.value)
-    }
-
-    const handleChangeFirstName = (e) => {
-        setFirstName(e.target.value)
-    }
-
-    const handleChangeLastName = (e) => {
-        setLastName(e.target.value)
-    }
-
+    
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen} style={{ marginLeft: '20px', background: '#2BA4C6', color: 'white', border: 'none', borderRadius: '0px', textTransform: 'capitalize', width: '90px' }}>

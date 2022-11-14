@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Requests from "./Request"
 import Button from '@material-ui/core/Button';
@@ -15,6 +14,7 @@ import { grey } from '@material-ui/core/colors';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import RequestsGetQuetionData from './Request'
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 
 
@@ -140,36 +140,25 @@ const DialogContent = withStyles((theme) => ({
 }))(MuiDialogContent);
 
 export default function CustomizedDialogs(props) {
-    // console.log("==========props", props.email)
-    // const emaildata = useContext(Email)
+    console.log("==========props", props)
 
-
-
-    console.log("=====propsdata", props)
-
-    // debugger
     const classes = useStyles();
     const requestQuetionsApiData = new RequestsGetQuetionData();
-    // console.log("=====>", requestQuetionsApiData.gestQuetionsDetails())
     const requestApiData = new Requests();
+
 
     const [open, setOpen] = React.useState(false);
     const [username, setUsername] = React.useState("");
-
-
+    const [password, setPassowrd] = React.useState(props.password);
+    const [cpassword, setCpassword] = React.useState(props.cpassword);
+    const [email, setEmail] = React.useState(props.email);
+    const [nickName, setNickName] = React.useState(props.nickName);
+    const [gender, setGender] = React.useState(props.gender);
+    const [data, setData] = React.useState([]);
     const [state, setState] = React.useState({
         age: '',
         name: 'hai',
     });
-
-    const [password, setPassowrd] = React.useState(props.password);
-    const [cpassword, setCpassword] = React.useState(props.cpassword);
-    const [email, setEmail] = React.useState(props.email);
-    const [firstName, setFirstName] = React.useState("");
-    const [lastName, setLastName] = React.useState("");
-    const [nickName, setNickName] = React.useState(props.nickName);
-    const [gender, setGender] = React.useState(props.gender);
-    const [data, setData] = React.useState([]);
 
 
     const handleSubmit = (e) => {
@@ -188,40 +177,17 @@ export default function CustomizedDialogs(props) {
             "last_name": ""
         }
 
-        console.log("=====sendData", sendData)
+        // console.log("=====sendData", sendData)
 
-        requestApiData.signUpRequest(sendData).then(res => {
+        // requestApiData.signUpRequest(sendData).then(res => {
 
-        })
+        // })
 
     }
     const handleClose = () => {
         setOpen(false);
     };
 
-    const handleChangeUsername = (e) => {
-        setUsername(e.target.value)
-    }
-
-    const handleChangePassword = (e) => {
-        setPassowrd(e.target.value)
-    }
-
-    const handleChangeConfirmPassword = (e) => {
-        setCpassword(e.target.value)
-    }
-
-    const handleChangeEmail = (e) => {
-        setEmail(e.target.value)
-    }
-
-    const handleChangeFirstName = (e) => {
-        setFirstName(e.target.value)
-    }
-
-    const handleChangeLastName = (e) => {
-        setLastName(e.target.value)
-    }
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -233,7 +199,7 @@ export default function CustomizedDialogs(props) {
 
     const getQuetionDetails = () => {
         requestQuetionsApiData.gestQuetionsDetails().then((res) => {
-            console.log("======res>", res.data.data.questions[0].question)
+            console.log("======res>", res.data.questions[0].question)
         })
     }
 
@@ -320,7 +286,7 @@ export default function CustomizedDialogs(props) {
                             }}
                         >
                             <option aria-label="None" value="" />
-                            {console.log("===data===",data )}
+                           
                             {/* {data.map((user, index) =>{
                                 
                                 <option key={index} value={user.id}>{user.question}</option>
@@ -352,48 +318,7 @@ export default function CustomizedDialogs(props) {
                         <Button variant="outlined" style={{ marginLeft: '20px', background: '#2BA4C6', color: 'white', border: 'none', borderRadius: '0px', textTransform: 'capitalize', width: '90px', height: '35px' }}>
                             Done
                         </Button>
-
-
                     </div>
-
-
-                    {/* <Email.Consumer>
-                        {(emaildata) => {
-                            return (
-                                <h1>ddddddddd{emaildata}</h1>
-                            )
-                        }}
-                    </Email.Consumer> */}
-                    {/* <select>
-                    <option>a</option>
-                    <option>a</option>
-                    <option>a</option>
-                    <option>a</option>
-                </select>
-
-                <select>
-                    <option>a</option>
-                    <option>a</option>
-                    <option>a</option>
-                    <option>a</option>
-                </select>
-
-                
-
-                <select>
-                    <option>a</option>
-                    <option>a</option>
-                    <option>a</option>
-                    <option>a</option>
-                </select>
-
-                <select>
-                    <option>a</option>
-                    <option>a</option>
-                    <option>a</option>
-                    <option>a</option>
-                </select> */}
-
                 </DialogContent>
             </Dialog>
         </div>

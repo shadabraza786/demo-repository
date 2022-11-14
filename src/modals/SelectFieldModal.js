@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Requests from "./Request"
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -161,15 +161,8 @@ export default function CustomizedDialogs(props) {
     const classes = useStyles();
     const requestApiData = new Requests();
 
-    const [open, setOpen] = React.useState(false);
-    const [username, setUsername] = React.useState("");
-    const [password, setPassowrd] = React.useState(props.password);
-    const [cpassword, setCpassword] = React.useState(props.cpassword);
-    const [email, setEmail] = React.useState(props.email);
-    const [firstName, setFirstName] = React.useState("");
-    const [lastName, setLastName] = React.useState("");
-    const [nickName, setNickName] = React.useState(props.nickName);
-    const [gender, setGender] = React.useState(props.gender);
+    const [open, setOpen] = useState(false);
+    const [selectImage, setSelectImage] = useState(false);
 
 
     const handleClickOpen = () => {
@@ -179,28 +172,8 @@ export default function CustomizedDialogs(props) {
         setOpen(false);
     };
 
-    const handleChangeUsername = (e) => {
-        setUsername(e.target.value)
-    }
-
-    const handleChangePassword = (e) => {
-        setPassowrd(e.target.value)
-    }
-
-    const handleChangeConfirmPassword = (e) => {
-        setCpassword(e.target.value)
-    }
-
-    const handleChangeEmail = (e) => {
-        setEmail(e.target.value)
-    }
-
-    const handleChangeFirstName = (e) => {
-        setFirstName(e.target.value)
-    }
-
-    const handleChangeLastName = (e) => {
-        setLastName(e.target.value)
+    const handleClickTravel = () => {
+        // console.log("========>")
     }
 
     // const handleSubmit = (e) => {
@@ -237,7 +210,7 @@ export default function CustomizedDialogs(props) {
                 <DialogContent >
 
                     <div className={classes.gridContainer}>
-                        <div className={classes.gridItem}>
+                        <div className={classes.gridItem} onClick={handleClickTravel}>
                             <img src={travelImage} className={classes.SelectFieldImage}></img>
                         </div>
                         <div className={classes.gridItem}>
@@ -296,6 +269,7 @@ export default function CustomizedDialogs(props) {
                     email={props.email}
                     password={props.password}
                     cpassword={props.cpassword}
+                    SequerityQuestions={props.question}
                     ></SequerityModalQuation>
                 </div>
                 </DialogContent>

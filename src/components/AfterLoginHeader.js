@@ -23,9 +23,10 @@ import {rootlink} from "../constant/configs/linkConfig";
 import { useNavigate } from 'react-router-dom';
 import getDetailsRequests from "../modals/Request";
 import Requests from "../modals/Request";
-import { MdLocalFireDepartment, MdRecommend, MdKeyboardArrowDown } from 'react-icons/md';
+import { MdLocalFireDepartment, MdRecommend, MdKeyboardArrowUp } from 'react-icons/md';
 import RecommendedIcon from '../assets/Images/recommended.jfif';
 import LiveVideos from '../assets/Images/livestream.jfif';
+import settingicon from '../assets/icons/settingicon.png'
 
 
 const drawerWidth = 220;
@@ -203,6 +204,13 @@ const useStyles = makeStyles((theme) => ({
     height : '25px',
     marginRight: '15px',
     paddingTop: '5px'
+},
+settingIcon : {
+  marginLeft : '26px',
+  width : '15px',
+  height : '20px',
+  marginRight: '15px',
+  paddingTop: '5px'
 },
 LiveVideosIcon : {
   marginLeft : '25px',
@@ -544,14 +552,14 @@ function AfterLoginHeader() {
 
         <ul className={classes.DrawerMain} style={{ marginTop: '-10px', borderBottom: 'none' }}>
           <div className={classes.DrwaerItemsAll}>
-          <img src={RecommendedIcon} className={classes.RecommdedIcon}></img>
-            <li> Settings</li>
+          <img src={settingicon} className={classes.settingIcon}></img>
+          <li style={{marginTop : '-3px'}}> Settings</li>
           </div>
 
           <div className={classes.DrwaerItemsAll}>
             <img src={RecommendedIcon} className={classes.RecommdedIcon}></img>
             <li> Take a Tour</li>
-            <MdKeyboardArrowDown size="1.5em" className={classes.DrawerIcons} style={{ marginTop: '8px' }}></MdKeyboardArrowDown>
+            <MdKeyboardArrowUp size="1.5em" className={classes.DrawerIcons} style={{ marginTop: '8px' }}></MdKeyboardArrowUp>
           </div>
 
           <div className={classes.DrwaerItemsWithTour}>
