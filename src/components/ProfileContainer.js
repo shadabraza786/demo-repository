@@ -1,6 +1,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
+import CloseIcon from '@material-ui/icons/Close';
+import { fontWeight } from '@mui/system';
 // import { fontSize, fontWeight } from '@mui/system';
 // import { grey } from '@material-ui/core/colors';
 // import CircleIcon from '../assets/icons/Vector.png'
@@ -64,16 +66,19 @@ const useStyles = makeStyles((theme) => ({
     inputLabelEmail: {
         fontSize: '16px'
     },
-    inputLabelSelectFiled   : {
+    inputLabelAnswerOne: {
+        fontSize: '16px'
+    },
+    inputLabelSelectFiled: {
         fontSize: '16px',
-        marginTop : '-50px'
+        marginTop: '-50px'
     },
     inputLabelGender: {
         fontSize: '16px'
     },
     inputLabelRole: {
         fontSize: '16px',
-        marginTop : '-50px'
+        marginTop: '-50px'
     },
     Inputbox: {
         width: '440px',
@@ -82,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
         // color : 'white',
         fontSize: '14px',
         marginTop: '5px',
+        paddingRight: '50px',
         border: '1px solid #dbd8d8'
     },
     formGroupMain: {
@@ -92,6 +98,10 @@ const useStyles = makeStyles((theme) => ({
     },
     formGroup: {
         marginTop: '30px'
+    },
+    formGroupSecurity: {
+        marginTop: '30px',
+        display: 'flex'
     },
     formGroupPassword: {
         marginTop: '30px'
@@ -124,18 +134,18 @@ const useStyles = makeStyles((theme) => ({
         padding: '15px',
         // color : 'white',
         fontSize: '14px',
-        backgroud : '#dbd8d8',
+        backgroud: '#dbd8d8',
         border: '1px solid #dbd8d8'
     },
-    InputboxRadioFemale : {
-        marginLeft : '70px',
+    InputboxRadioFemale: {
+        marginLeft: '70px',
         marginTop: '5px',
         width: '20px',
         height: '55px',
         padding: '15px',
         // color : 'white',
         fontSize: '14px',
-        backgroud : '#dbd8d8',
+        backgroud: '#dbd8d8',
         border: '1px solid #dbd8d8'
     },
     passwordAndButton: {
@@ -143,7 +153,18 @@ const useStyles = makeStyles((theme) => ({
     },
     GenderInputDiv: {
         display: 'flex',
-        marginTop : '-15px'
+        marginTop: '-15px'
+    },
+    CancleButton: {
+        background: '#dbd8d8',
+        width: '120px',
+        height: '50px',
+        marginTop: '7px',
+        marginLeft: '20px',
+        border: 'none',
+        color: 'black',
+        fontSize: '18px',
+        fontWeight : 'bold'
     },
     ChangeButtonWithPassword: {
         background: '#2BA4C6',
@@ -152,24 +173,66 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '7px',
         marginLeft: '20px',
         border: 'none',
-        color: 'white',
+        color: 'White',
         fontSize: '18px',
         // fontWeight : 'bold'
     },
-    GenderPara : {
-        marginTop : '22px',
-        marginLeft : '15px',
+    GenderPara: {
+        marginTop: '22px',
+        marginLeft: '15px',
         fontSize: '16px',
     },
-    SelectItemDiv : {
-        width : '100px',
-        height : '50px',
-        background : '#dbd8d8',
-        borderRadious : '20px',
-        border : '1px solid black',
-        marginBottom : '50px'
-    }
-    
+    SelectItemDivAll: {
+        display: 'flex',
+        width: '90px',
+        height: '40px',
+        background: '#dbd8d8',
+        borderRadius: '25px',
+        // marginBottom : '50px'
+    },
+    SelectItems: {
+        display: 'flex',
+        marginTop: '20px'
+    },
+    SelectItemDivRecent: {
+        display: 'flex',
+        width: '125px',
+        height: '40px',
+        background: '#dbd8d8',
+        borderRadius: '25px',
+        marginLeft: '10px'
+        // marginBottom : '50px'
+    },
+    SelectItemDivEducation: {
+        display: 'flex',
+        width: '150px',
+        height: '40px',
+        background: '#dbd8d8',
+        borderRadius: '25px',
+        marginLeft: '10px'
+        // marginBottom : '50px'
+    },
+    selctItemHeading: {
+        marginTop: '10px',
+        marginLeft: '15px',
+        paddingTop: '0px',
+        fontSize: '18px',
+        // fontWeight : 'bold'
+    },
+    SelectItemIcon: {
+        marginTop: '10px',
+        marginLeft: '15px',
+        // marginBottom : '10px'
+    },
+    formGroupAnswer: {
+        marginLeft: '50px'
+    },
+    formGroupUpdateButton: {
+        marginTop: '50px',
+        marginLeft : '800px',
+        paddingBottom : '50px'
+    },
+
 }))
 
 const ProfileContainer = () => {
@@ -241,43 +304,119 @@ const ProfileContainer = () => {
 
                         <div className={classes.formGroupSelectField}>
                             <label className={classes.inputLabelSelectFiled}>Field of Interest</label><br />
-                            <select  className={classes.Inputbox}>
+                            <select className={classes.Inputbox}>
                                 <option></option>
-                                <option>ddd</option>
-                                <option>ddd</option>
                             </select>
                         </div>
 
-                        {/* <div className={classes.formGroupSelectField}>
-                            <div className={classes.SelectItemDiv} >
-                                <div>
-                                        <h1>All</h1>
+                        <div className={classes.formGroupSelectField}>
+                            <div className={classes.SelectItems}>
+                                <div className={classes.SelectItemDivAll}>
+                                    <p className={classes.selctItemHeading}>All</p>
+                                    <CloseIcon className={classes.SelectItemIcon} />
+                                </div>
+
+                                <div className={classes.SelectItemDivRecent}>
+                                    <p className={classes.selctItemHeading}>Recent</p>
+                                    <CloseIcon className={classes.SelectItemIcon} />
+                                </div>
+
+                                <div className={classes.SelectItemDivRecent}>
+                                    <p className={classes.selctItemHeading}>Music</p>
+                                    <CloseIcon className={classes.SelectItemIcon} />
+                                </div>
+
+                                <div className={classes.SelectItemDivRecent}>
+                                    <p className={classes.selctItemHeading}>Travel</p>
+                                    <CloseIcon className={classes.SelectItemIcon} />
+                                </div>
+
+                                <div className={classes.SelectItemDivRecent}>
+                                    <p className={classes.selctItemHeading}>Food</p>
+                                    <CloseIcon className={classes.SelectItemIcon} />
+                                </div>
+
+                                <div className={classes.SelectItemDivRecent}>
+                                    <p className={classes.selctItemHeading}>News</p>
+                                    <CloseIcon className={classes.SelectItemIcon} />
+                                </div>
+
+                                <div className={classes.SelectItemDivEducation}>
+                                    <p className={classes.selctItemHeading}>Education</p>
+                                    <CloseIcon className={classes.SelectItemIcon} />
+                                </div>
+
+                                <div className={classes.SelectItemDivRecent}>
+                                    <p className={classes.selctItemHeading}>Wildlife</p>
+                                    <CloseIcon className={classes.SelectItemIcon} />
                                 </div>
                             </div>
-                           
-                        </div> */}
 
-                        {/* <div className={classes.formGroupSelectField}>
-                            <label className={classes.inputLabelSelectFiled}>Field of Interest</label><br />
-                            
-                        </div> */}
+                            <div className={classes.SelectItems}>
+                                <div className={classes.SelectItemDivEducation} style={{ marginLeft: '-2px' }}>
+                                    <p className={classes.selctItemHeading}>Education</p>
+                                    <CloseIcon className={classes.SelectItemIcon} />
+                                </div>
+
+                                <div className={classes.SelectItemDivRecent}>
+                                    <p className={classes.selctItemHeading}>Wildlife</p>
+                                    <CloseIcon className={classes.SelectItemIcon} />
+                                </div>
+                            </div>
+
+                            <div className={classes.formGroup}>
+                                <label className={classes.inputLabelEmail}>Recovery Email Address*</label><br />
+                                <input type='text' className={classes.Inputbox}></input>
+                            </div>
+
+                            <div className={classes.formGroup}>
+                                <label className={classes.inputLabelEmail}>Contact Number*</label><br />
+                                <input type='text' className={classes.Inputbox}></input>
+                            </div>
+
+                            <hr style={{ marginTop: '50px', marginBottom: '30px', color: '#dbd8d8' }}></hr>
+
+                            <h3>Security Information</h3>
+
+                            <div className={classes.formGroupSecurity}>
+                                <div>
+                                    <label className={classes.inputLabelEmail}>Question 1*</label><br />
+                                    <select className={classes.Inputbox}>
+                                        <option>Which city you were born in?</option>
+                                    </select>
+                                </div>
+
+                                <div className={classes.formGroupAnswer}>
+                                    <label className={classes.inputLabelAnswerOne}>Answer 1*</label><br />
+                                    <input type='text' placeholder="Australia" className={classes.Inputbox}></input>
+                                </div>
+                            </div>
+
+                            <div className={classes.formGroupSecurity}>
+                                <div>
+                                    <label className={classes.inputLabelEmail}>Question 2*</label><br />
+                                    <select className={classes.Inputbox}>
+                                        <option></option>
+                                    </select>
+                                </div>
+
+                                <div className={classes.formGroupAnswer}>
+                                    <label className={classes.inputLabelAnswerOne}>Answer 2*</label><br />
+                                    <input type='text' className={classes.Inputbox}></input>
+                                </div>
+                            </div>
+
+                            <div className={classes.formGroupUpdateButton}>
+                               
+                                <div className={classes.passwordAndButton}>
+                                    <button className={classes.CancleButton}>Cancel</button>
+                                    <button className={classes.ChangeButtonWithPassword}>Update</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-
                 </form>
-
-                {/* <p>but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-            <p>but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-            <p>but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-            <p>but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-
-            <p>but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-            <p>but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-            <p>but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-            <p>but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p> */}
             </main>
-
-
         </React.Fragment>
     )
 }
